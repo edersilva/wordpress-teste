@@ -38,6 +38,10 @@ Ufa... agora, respira!
 
 > Você deve saber que, seus dados de acesso ao admin, se encontram no `.env`
 
+#### Observação importante
+- **Não use nenhum tipo de page builder para construir o layout**. Queremos que você construa o tema do zero;
+- Caso use algum tipo de page builder (Elementor, Gutenberg, WpBakery etc.) será **desclassificado**;
+- Dica: Construa primeiro o frontend da aplicação, em seguida integre ele ao WordPress.
 
 Agora sim. Finalizamos por aqui.  
 Faça um fork desse projeto, e ao final, submit a PR and good luck! :D    
