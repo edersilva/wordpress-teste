@@ -63,6 +63,16 @@ section .subtitle {
   font-size: 14px;
 }
 
+.card {
+  border: none;
+}
+
+.img-thumbnail {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
 .container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -188,6 +198,11 @@ section .subtitle {
   .item {
     text-align: center;
   }
+}
+
+.user-image {
+  margin: 0 auto;
+  max-width: 150px;
 }
 
 header {

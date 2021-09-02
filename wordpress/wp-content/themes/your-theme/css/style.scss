@@ -73,12 +73,21 @@ p {
   }
 }
 
-section{
-   .subtitle {
+section {
+  .subtitle {
     text-transform: uppercase;
     color: $gray;
     font-size: $font-size-s;
   }
+}
+
+.card {
+  border: none;
+}
+.img-thumbnail {
+  background: transparent;
+  border: none;
+  border-radius: 0;
 }
 
 @import "partials/layout";
