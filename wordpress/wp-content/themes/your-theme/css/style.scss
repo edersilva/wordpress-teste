@@ -1,0 +1,52 @@
+@mixin responsive(){
+	@media screen and (max-width: 960px){
+		@content;
+	}
+}
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+*, *::after, *::before{
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+   font-family: 'Open Sans', sans-serif;
+}
+
+@import 'partials/colors';
+
+body{
+   width: 100%;
+   background-color: $white;
+}
+
+img, svg{
+   display:block;
+   width: 100%;
+}
+
+a{
+   text-decoration: none;
+   color: $gray;
+}
+
+p{
+   font-size: 16px;
+   color: $gray;
+   letter-spacing: 1px;
+   line-height: 140%;
+}
+
+.icon{
+   width: auto;
+   margin-bottom: .5rem;
+
+   @include responsive(){
+		width: 100%;
+	}
+}
+
+
+
+@import 'partials/layout';
+@import 'partials/menu';
+@import 'partials/spacing';
