@@ -39,6 +39,8 @@ if ( ! function_exists( 'your_theme_setup' ) ) :
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
 		add_theme_support( 'post-thumbnails' );
+		// Image size for single posts
+		add_image_size( 'single-post-thumbnail', 367, 206 );
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
@@ -169,6 +171,41 @@ function prefix_bs5_dropdown_data_attribute( $atts, $item, $args ) {
     }
     return $atts;
 }
+
+// Register Custom Post Type
+function custom_post_type() {
+
+	$labels = array(
+		'name'                  => _x( 'Portfolio', 'Post Type General Name', 'text_domain' ),
+		'singular_name'         => _x( 'Trabalho', 'Post Type Singular Name', 'text_domain' ),
+		'menu_name'             => __( 'Portfolio', 'text_domain' ),
+		'name_admin_bar'        => __( 'Trabalhos', 'text_domain' ),
+
+	);
+	$args = array(
+		'label'                 => __( 'Trabalho', 'text_domain' ),
+		'description'           => __( 'Trabalhos desenvolvidos', 'text_domain' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'editor', 'thumbnail' ),
+		'taxonomies'            => array( 'category', 'post_tag' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'menu_icon'             => 'dashicons-portfolio',
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => true,
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'page',
+	);
+	register_post_type( 'meus_trabalhos', $args );
+
+}
+add_action( 'init', 'custom_post_type', 0 );
 
 /**
  * Implement the Custom Header feature.

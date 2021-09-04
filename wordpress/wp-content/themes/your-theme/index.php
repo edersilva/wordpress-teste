@@ -88,39 +88,18 @@ get_header();
 
 	<!-- Meus Trabalhos -->
 	<section class="trabalho-section container my-4 py-3" id="work">
-		<div class="container">
-			<div class="row d-flex ">
-				<div class="col-sm-12 col-md-4 s-0">
-					<a href="">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/work1.png" alt="work1">
-					</a>
-				</div>
-				<div class="col-sm-12 col-md-4 p-0 m-0">
-					<a href="">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/work2.png" alt="work2">
-					</a>
-				</div>
-				<div class="col-sm-12 col-md-4 p-0 m-0">
-					<a href="">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/work3.png" alt="work3">
-					</a>
-				</div>
-				<div class="col-sm-12 col-md-4 p-0 m-0">
-					<a href="">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/work4.png" alt="work4">
-					</a>
-				</div>
-				<div class="col-sm-12 col-md-4 p-0 m-0">
-					<a href="">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/work5.png" alt="work5">
-					</a>
-				</div>
-				<div class="col-sm-12 col-md-4 p-0 m-0">
-					<a href="">
-						<img src="<?php echo get_template_directory_uri(); ?>/img/work6.png" alt="work6">
-					</a>
-				</div>
-			</div>
+		<div class="row row-cols-1 row-cols-md-3">
+			<?php
+				$loop = new WP_Query( array( 'post_type' => 'meus_trabalhos', 'posts_per_page' => 10 ) );
+
+				while ( $loop->have_posts() ) : $loop->the_post();
+			?>
+					<div class="col s-0">
+						<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="card">
+							<img src="<?php the_post_thumbnail_url('full'); ?>" class="card-img-top" alt="...">
+						</a>
+					</div>
+				<?php endwhile; ?>
 		</div>
 	</section>
 
