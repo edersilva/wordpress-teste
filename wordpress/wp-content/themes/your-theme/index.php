@@ -15,10 +15,10 @@
 get_header();
 ?>
 
-
+<main id="primary" class="site-main">
 	<!-- Container -->
 	<section class="home-section section-hero container mb-4 pb-3" id="home">
-		<div class="overlay" style="background-image: url(img/hero.png); background-position: right bottom; background-repeat: no-repeat;">
+		<div class="overlay" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/hero.png); background-position: right bottom; background-repeat: no-repeat;">
 		</div>
 		<div class="col-12 col-md-5">
 			<div class="hero-text golden-top golden-bottom">
@@ -54,14 +54,14 @@ get_header();
 		<div class="col-md-6 offset-md-1">
 			<div class="row">
 				<div class="item col-md-6 px-2">
-					<img src="svg/html5.svg" onload="SVGInject(this)" class="icon" />
+					<img src="<?php echo get_template_directory_uri(); ?>/svg/html5.svg"  class="icon" />
 					<h3 class="title">HTML5 & CSS3</h3>
 					<p class="my-2">
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 					</p>
 				</div>
 				<div class="item col-md-6 px-2">
-					<img src="svg/performance.svg" onload="SVGInject(this)" class="icon" />
+					<img src="<?php echo get_template_directory_uri(); ?>/svg/performance.svg"  class="icon" />
 					<h3 class="title">Performance</h3>
 					<p class="my-2">
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -69,14 +69,14 @@ get_header();
 				</div>
 
 				<div class="item col-md-6 px-2">
-					<img src="svg/mobile.svg" onload="SVGInject(this)" class="icon" />
+					<img src="<?php echo get_template_directory_uri(); ?>/svg/mobile.svg"  class="icon" />
 					<h3 class="title">Responsividade</h3>
 					<p class="my-2">
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 					</p>
 				</div>
 				<div class="item col-md-6 px-2">
-					<img src="svg/rocket.svg" onload="SVGInject(this)" class="icon" />
+					<img src="<?php echo get_template_directory_uri(); ?>/svg/rocket.svg"  class="icon" />
 					<h3 class="title">Produtividade</h3>
 					<p class="my-2">
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -92,32 +92,32 @@ get_header();
 			<div class="row d-flex">
 				<div class="col-sm-12 col-md-4 p-0 m-0">
 					<a href="">
-						<img src="img/work1.png" alt="work1">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/work1.png" alt="work1">
 					</a>
 				</div>
 				<div class="col-sm-12 col-md-4 p-0 m-0">
 					<a href="">
-						<img src="img/work2.png" alt="work2">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/work2.png" alt="work2">
 					</a>
 				</div>
 				<div class="col-sm-12 col-md-4 p-0 m-0">
 					<a href="">
-						<img src="img/work3.png" alt="work3">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/work3.png" alt="work3">
 					</a>
 				</div>
 				<div class="col-sm-12 col-md-4 p-0 m-0">
 					<a href="">
-						<img src="img/work4.png" alt="work4">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/work4.png" alt="work4">
 					</a>
 				</div>
 				<div class="col-sm-12 col-md-4 p-0 m-0">
 					<a href="">
-						<img src="img/work5.png" alt="work5">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/work5.png" alt="work5">
 					</a>
 				</div>
 				<div class="col-sm-12 col-md-4 p-0 m-0">
 					<a href="">
-						<img src="img/work6.png" alt="work6">
+						<img src="<?php echo get_template_directory_uri(); ?>/img/work6.png" alt="work6">
 					</a>
 				</div>
 			</div>
@@ -171,7 +171,7 @@ get_header();
 				<div class="row g-2">
 					<div class="col-md-4">
 						<div class="card p-3 text-center px-4">
-							<div class="user-image mb-1"> <img src="img/tony.png" class="img-thumbnail"> </div>
+							<div class="user-image mb-1"> <img src="<?php echo get_template_directory_uri(); ?>/img/tony.png" class="img-thumbnail"> </div>
 							<div class="user-content text-black">
 								<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque"</p>
 								<div class="golden-top my-2"></div>
@@ -182,7 +182,7 @@ get_header();
 					</div>
 					<div class="col-md-4">
 						<div class="card p-3 text-center px-4">
-							<div class="user-image mb-1"> <img src="img/jeff.png" class="img-thumbnail"> </div>
+							<div class="user-image mb-1"> <img src="<?php echo get_template_directory_uri(); ?>/img/jeff.png" class="img-thumbnail"> </div>
 							<div class="user-content text-black">
 								<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque"</p>
 								<div class="golden-top my-2"></div>
@@ -192,7 +192,7 @@ get_header();
 					</div>
 					<div class="col-md-4">
 						<div class="card p-3 text-center px-4">
-							<div class="user-image mb-1"> <img src="img/bill.png" class="img-thumbnail"> </div>
+							<div class="user-image mb-1"> <img src="<?php echo get_template_directory_uri(); ?>/img/bill.png" class="img-thumbnail"> </div>
 							<div class="user-content text-black">
 								<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque"</p>
 								<div class="golden-top my-2"></div>
@@ -226,31 +226,31 @@ get_header();
 			<div class="row">
 
 				<div class="item col-md-4">
-					<img src="img/cliente1.png" class="icon" />
+					<img src="<?php echo get_template_directory_uri(); ?>/img/cliente1.png" class="icon" />
 				</div>
 				<div class="item col-md-4">
-					<img src="img/cliente2.png" class="icon" />
+					<img src="<?php echo get_template_directory_uri(); ?>/img/cliente2.png" class="icon" />
 				</div>
 				<div class="item col-md-4">
-					<img src="img/cliente3.png" class="icon" />
+					<img src="<?php echo get_template_directory_uri(); ?>/img/cliente3.png" class="icon" />
 				</div>
 				<div class="item col-md-4">
-					<img src="img/cliente4.png" class="icon" />
+					<img src="<?php echo get_template_directory_uri(); ?>/img/cliente4.png" class="icon" />
 				</div>
 				<div class="item col-md-4">
-					<img src="img/cliente5.png" class="icon" />
+					<img src="<?php echo get_template_directory_uri(); ?>/img/cliente5.png" class="icon" />
 				</div>
 				<div class="item col-md-4">
-					<img src="img/cliente6.png" class="icon" />
+					<img src="<?php echo get_template_directory_uri(); ?>/img/cliente6.png" class="icon" />
 				</div>
 				<div class="item col-md-4">
-					<img src="img/cliente7.png" class="icon" />
+					<img src="<?php echo get_template_directory_uri(); ?>/img/cliente7.png" class="icon" />
 				</div>
 				<div class="item col-md-4">
-					<img src="img/cliente8.png" class="icon" />
+					<img src="<?php echo get_template_directory_uri(); ?>/img/cliente8.png" class="icon" />
 				</div>
 				<div class="item col-md-4">
-					<img src="img/cliente9.png" class="icon" />
+					<img src="<?php echo get_template_directory_uri(); ?>/img/cliente9.png" class="icon" />
 				</div>
 			</div>
 	</section>
@@ -296,28 +296,15 @@ get_header();
 					</form>
 				</div>
 				<div class="col-md-6">
-					<img src="img/map.png" class="img-fluid" alt="">
+					<img src="<?php echo get_template_directory_uri(); ?>/img/map.png" class="img-fluid" alt="">
 				</div>
 			</div>
 
 
 		</div>
 	</section>
-
+</main>
 	<!-- Footer -->
-	<footer class="container">
-		<div class="d-flex">
-			<div class="col-12 align-items-center">
-				<small class="text-muted">Feito com amor por Tatiane Gabrielle</small>
-			</div>
-		</div>
-	</footer>
-
-
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-
-
-</body>
-
-</html>
+	<?php
+get_sidebar();
+get_footer();

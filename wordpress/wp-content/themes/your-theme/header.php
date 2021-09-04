@@ -29,27 +29,24 @@
 
 	<!-- HEADER -->
 	<header class="site-header sticky-top">
-		<nav class="navbar navbar-expand-lg" label="navbar">
+		<nav class="navbar navbar-expand-lg" role="navigation">
 			<div class="container">
-				<h1 class="navbar-brand my-0 py-0 mr-1 px-3">Seu Site</h1>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-						<?php esc_html_e( '', 'your-theme' ); ?>
-				</button>
-				<div class="collapse navbar-collapse ml-1">
-				<?php
-					wp_nav_menu(
-						array(
-
-							'container'         => 'ul',
-							'menu_class'        => 'nav navbar-nav',
-							'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
-							'walker'            => new WP_Bootstrap_Navwalker(),
-							'theme_location'=> 'menu-1',
-						)
-					);
-				?>
-				</div>
+				<a class="navbar-brand" href="#"><?php bloginfo( 'name' ); ?></a>
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'your-theme-slug' ); ?>">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<?php
+						wp_nav_menu( array(
+							'theme_location'  => 'menu-1',
+							'container'       => 'div',
+							'container_class' => 'collapse navbar-collapse',
+							'container_id'    => 'menu',
+							'menu_class'      => 'navbar-nav mr-auto',
+							'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
+							'walker'          => new WP_Bootstrap_Navwalker(),
+						) );
+					?>
 			</div>
 		</nav>
 	</header>
