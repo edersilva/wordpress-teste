@@ -89,8 +89,8 @@ get_header();
 	<!-- Meus Trabalhos -->
 	<section class="trabalho-section container my-4 py-3" id="work">
 		<div class="container">
-			<div class="row d-flex">
-				<div class="col-sm-12 col-md-4 p-0 m-0">
+			<div class="row d-flex ">
+				<div class="col-sm-12 col-md-4 s-0">
 					<a href="">
 						<img src="<?php echo get_template_directory_uri(); ?>/img/work1.png" alt="work1">
 					</a>
@@ -270,7 +270,7 @@ get_header();
 				</div>
 		</div>
 			<div class="row">
-				<div class="col-md-6 px-5">
+				<div class="col-md-6 mb-3">
 					<form>
 						<div class="form-outline">
 							<label class="form-label" for="nome">Nome:</label>
@@ -295,7 +295,7 @@ get_header();
 						<button type="submit" class="btn d-block w-100">ENVIAR MENSAGEM</button>
 					</form>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-6 mb-3">
 					<img src="<?php echo get_template_directory_uri(); ?>/img/map.png" class="img-fluid" alt="">
 				</div>
 			</div>

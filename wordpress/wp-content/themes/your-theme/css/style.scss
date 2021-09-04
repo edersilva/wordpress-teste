@@ -78,7 +78,7 @@ p {
   margin-bottom: 0.5rem;
 
   @include responsive() {
-    width: 100%;
+    margin: 0.5rem auto;
   }
 }
 header{
