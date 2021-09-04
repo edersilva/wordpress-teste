@@ -1,3 +1,4 @@
+
 @mixin responsive() {
   @media screen and (max-width: 960px) {
     @content;
@@ -80,7 +81,62 @@ p {
     width: 100%;
   }
 }
+header{
+	width: 100%;
+	background: $white;
+}
 
+.navbar{
+	max-width: 1440px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	text-transform: uppercase;
+
+	.navbar-brand {
+		font-size: $font-size-xl;
+		color: $black;
+	}
+	@include responsive() {
+
+		.container{
+			display: flex;
+			flex-direction: row;
+		flex-wrap: inherit;
+		align-items: center;
+		justify-content: space-between
+		}
+	}
+	.navbar-toggler-icon{
+		background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(210, 179, 86, 1)' stroke-width='4' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+	}
+}
+.navbar-nav{
+	& .menu-item a{
+		color: $gray;
+		outline: 1px solid transparent;
+		border-bottom: 4px solid transparent;
+		-webkit-transition: all 0.2s ease-in-out;
+		transition: all 0.2s ease-in-out;
+
+		&:hover{
+			color: $gold;
+			outline: 0px solid transparent;
+			border-bottom: 4px solid $gold;
+			-webkit-transition: all 0.2s ease-in-out;
+			transition: all 0.2s ease-in-out;
+		}
+		&.active{
+			color: $gold;
+			outline: 0px solid transparent;
+			border-bottom: 4px solid $gold;
+			-webkit-transition: all 0.2s ease-in-out;
+			transition: all 0.2s ease-in-out;
+		}
+	}
+
+}
 .home-section {
   .title {
     text-transform: uppercase;
