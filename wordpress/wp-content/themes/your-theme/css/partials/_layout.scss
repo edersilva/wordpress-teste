@@ -1,0 +1,68 @@
+.container {
+  @include responsive() {
+    flex-direction: column;
+    height: auto;
+    overflow: hidden;
+  }
+}
+.golden-top {
+  &::before {
+    content: "";
+    width: 50px;
+    display: block;
+    height: 7px;
+    background: $gold;
+    margin: 32px 0px;
+  }
+}
+.golden-bottom {
+  &::after {
+    content: "";
+    width: 50px;
+    display: block;
+    height: 7px;
+    background: $gold;
+    margin: 32px 0px;
+  }
+}
+
+.home-section {
+  .container {
+    z-index: 2;
+    position: relative;
+    height: 70vh;
+
+  }
+  @include responsive() {
+    .container {
+      z-index: 2;
+      position: relative;
+      height: 150vh;
+    }
+  }
+  .overlay {
+    z-index: -1;
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .hero-text {
+    max-width: 70%;
+  }
+}
+
+
+.item {
+  padding: 16px 8px;
+
+  @include responsive() {
+    text-align: center;
+  }
+}
+.user-image {
+  margin: 0 auto;
+  max-width: 150px;
+}

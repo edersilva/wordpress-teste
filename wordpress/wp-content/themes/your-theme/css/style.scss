@@ -1,0 +1,244 @@
+
+@mixin responsive() {
+  @media screen and (max-width: 960px) {
+    @content;
+  }
+}
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+@import "partials/colors";
+
+body {
+  width: 100%;
+  background-color: $white;
+}
+
+img,
+svg {
+  display: block;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: $gray;
+  &:hover{
+    color: $gold;
+  }
+}
+
+.card{
+  &:hover .overlay {
+    opacity: 1;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  .text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+}
+
+
+
+p {
+  font-size: $font-size-m;
+  color: $gray;
+  letter-spacing: 1px;
+  line-height: 140%;
+}
+.btn {
+  display: inline-block;
+  padding: 10px 32px;
+  text-transform: uppercase;
+  background: transparent;
+  position: relative;
+  transition: 0.7s ease;
+  border: 3px solid $black;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #111111;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    top: -1px;
+    left: -1px;
+    width: 0%;
+    height: 104%;
+    background: rgba(0, 0, 0, 0.5);
+    transition: 0.7s ease;
+    color: $white;
+  }
+
+  &:hover {
+    color: $white;
+    &::after {
+      width: 101%;
+    }
+  }
+}
+
+.icon {
+  width: auto;
+  margin-bottom: 0.5rem;
+
+  @include responsive() {
+    margin: 0.5rem auto;
+  }
+}
+header{
+	width: 100%;
+	background: $white;
+}
+
+.navbar{
+	max-width: 1440px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	text-transform: uppercase;
+
+	.navbar-brand {
+		font-size: $font-size-xl;
+		color: $black;
+	}
+    @include responsive() {
+      .container{
+        display: flex;
+        flex-direction: row;
+      flex-wrap: inherit;
+      align-items: center;
+      justify-content: space-between
+      }
+    }
+  .navbar-toggler:focus {
+    box-shadow: none;
+  }
+	.navbar-toggler-icon{
+		background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(210, 179, 86, 1)' stroke-width='4' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+	}
+}
+
+.navbar-nav{
+	.menu-item a{
+		color: $gray;
+		outline: 1px solid transparent;
+		border-bottom: 4px solid transparent;
+		-webkit-transition: all 0.2s ease-in-out;
+		transition: all 0.2s ease-in-out;
+
+		&:hover{
+			color: $gold;
+			outline: 0px solid transparent;
+			border-bottom: 4px solid $gold;
+			-webkit-transition: all 0.2s ease-in-out;
+			transition: all 0.2s ease-in-out;
+		}
+		&.active{
+			color: $gold;
+			outline: 0px solid transparent;
+			border-bottom: 4px solid $gold;
+			-webkit-transition: all 0.2s ease-in-out;
+			transition: all 0.2s ease-in-out;
+		}
+	}
+
+}
+
+.home-section {
+  .title {
+    text-transform: uppercase;
+    line-height: 1;
+    font-size: $font-size-xxxl;
+    color: $black;
+  }
+}
+
+.sobre-section {
+  .title {
+    font-size: $font-size-xxl;
+    color: $black;
+  }
+  .item {
+    .title {
+      font-size: $font-size-xl;
+      color: $black;
+    }
+  }
+}
+
+section {
+  .subtitle {
+    text-transform: uppercase;
+    color: $gray;
+    font-size: $font-size-s;
+  }
+}
+
+.card {
+  border: none;
+}
+.img-thumbnail {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.text-black {
+   p{
+      color: $black;
+   }
+}
+.form-outline {
+    margin-bottom: 1rem;
+
+    label{
+      margin-bottom: 10px;
+      line-height: 25px;
+      color: #D2B356;
+
+    }
+    .form-control{
+      background: #FFFFFF;
+      border: 1px solid rgba(221, 221, 221, 0.867);
+      box-sizing: border-box;
+      box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12);
+      border-radius: 2px;
+    }
+}
+
+
+@import "partials/layout";
+@import "partials/spacing";
