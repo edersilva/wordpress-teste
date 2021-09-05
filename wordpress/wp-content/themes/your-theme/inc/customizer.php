@@ -50,7 +50,7 @@ function your_theme_customize( $wp_customize ) {
 		// Title.
 		$wp_customize->add_setting( 'header_title',
 			array(
-				'default'           => '',
+				'default'           => 'Esta é minha página',
 				'sanitize_callback' => 'sanitize_text_field',
 			)
 		);
@@ -66,7 +66,7 @@ function your_theme_customize( $wp_customize ) {
 		// Text.
 		$wp_customize->add_setting( 'header_texto',
 			array(
-				'default'           => '',
+				'default'           => 'ut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet',
 				'sanitize_callback' => 'sanitize_text_field',
 			)
 		);
@@ -82,7 +82,7 @@ function your_theme_customize( $wp_customize ) {
 		// URL.
 		$wp_customize->add_setting( 'header_url',
 			array(
-				'default'           => '',
+				'default'           => '#work',
 				'sanitize_callback' => 'sanitize_text_field',
 			)
 		);
@@ -93,6 +93,67 @@ function your_theme_customize( $wp_customize ) {
 				'type'        => 'text',
 				'section'     => 'theme_header_section',
 				'priority'    => 4,
+			)
+		);
+
+			/**
+	 * Initialize sections
+	 */
+	$wp_customize->add_section(
+		'theme_social_section',
+		array(
+			'title'    => __( 'Redes Sociais', 'your-theme' ),
+			'priority' => 1000,
+		)
+	);
+
+		// Instagram.
+		$wp_customize->add_setting( 'social_instagram',
+			array(
+				'default'           => 'http://instagram.com',
+				'sanitize_callback' => 'sanitize_text_field',
+			)
+		);
+		// Control for Instagram
+		$wp_customize->add_control( 'social_instagram',
+			array(
+				'label'       => __( 'Instagram URL', 'your-theme' ),
+				'type'        => 'text',
+				'section'     => 'theme_social_section',
+				'priority'    => 1,
+			)
+		);
+
+		// Linkedin.
+		$wp_customize->add_setting( 'social_linkedin',
+			array(
+				'default'           => 'http://linkedin.com',
+				'sanitize_callback' => 'sanitize_text_field',
+			)
+		);
+		// Control for Linkedin
+		$wp_customize->add_control( 'social_linkedin',
+			array(
+				'label'       => __( 'Linkedin URL', 'your-theme' ),
+				'type'        => 'text',
+				'section'     => 'theme_social_section',
+				'priority'    => 2,
+			)
+		);
+		// GitHub.
+		$wp_customize->add_setting( 'social_github',
+			array(
+				'default'           => 'http://github.com',
+				'sanitize_callback' => 'sanitize_text_field',
+			)
+		);
+		// Control for Instagram
+		$wp_customize->add_control( 'social_github',
+			array(
+				'label'       => __( 'Github URL', 'your-theme' ),
+				'type'        => 'text',
+				'section'     => 'theme_social_section',
+				'priority'    => 3,
 			)
 		);
 

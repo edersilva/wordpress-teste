@@ -25,6 +25,39 @@ a {
   color: #A0A0A0;
 }
 
+a:hover {
+  color: #D2B356;
+}
+
+.card:hover .overlay {
+  opacity: 1;
+}
+
+.card .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  -webkit-transition: .5s ease;
+  transition: .5s ease;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.card .text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
 p {
   font-size: 15px;
   color: #A0A0A0;
@@ -216,20 +249,6 @@ section .subtitle {
   border-radius: 2px;
 }
 
-.container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  overflow: none;
-}
-
 @media screen and (max-width: 960px) {
   .container {
     -webkit-box-orient: vertical;
@@ -239,22 +258,6 @@ section .subtitle {
     height: auto;
     overflow: hidden;
   }
-}
-
-.flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.align-items-center {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.w-auto {
-  width: auto;
 }
 
 .golden-top::before {
@@ -275,22 +278,21 @@ section .subtitle {
   margin: 32px 0px;
 }
 
-.section-hero {
+.home-section .container {
+  z-index: 2;
   position: relative;
+  height: 70vh;
 }
 
 @media screen and (max-width: 960px) {
-  .section-hero {
+  .home-section .container {
+    z-index: 2;
+    position: relative;
     height: 150vh;
   }
 }
 
-.section-hero .container {
-  z-index: 2;
-  position: relative;
-}
-
-.section-hero .overlay {
+.home-section .overlay {
   z-index: -1;
   position: absolute;
   content: "";
@@ -300,7 +302,7 @@ section .subtitle {
   bottom: 0;
 }
 
-.section-hero .hero-text {
+.home-section .hero-text {
   max-width: 70%;
 }
 

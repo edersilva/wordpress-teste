@@ -5,7 +5,7 @@
 
 	<!-- Container -->
 	<div class="row">
-		<section class="home-section section-hero mb-4 pb-3" id="home">
+		<section class="home-section section-hero mb-2 pb-3" id="home">
 			<div class="container">
 				<?php
 					$header_logo = get_theme_mod( 'header_logo' );
@@ -93,17 +93,24 @@
 	<div class="row">
 		<section class="trabalho-section my-4 py-3" id="work">
 			<div class="row">
-				<div class="container">
-					<?php
-							$loop = new WP_Query( array( 'post_type' => 'meus_trabalhos', 'posts_per_page' => 10 ) );
-							while ( $loop->have_posts() ) : $loop->the_post(); ?>
-								<div class="col-sm-10 m-auto col-lg-4 p-0 m-lg-0">
-									<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="card">
-										<img src="<?php the_post_thumbnail_url('full'); ?>" class="card-img-top" alt="...">
-									</a>
-								</div>
-						<?php endwhile; ?>
+				<div class="col-10 m-auto">
+					<div class="row">
+
+						<?php
+								$loop = new WP_Query( array( 'post_type' => 'meus_trabalhos', 'posts_per_page' => 10 ) );
+								while ( $loop->have_posts() ) : $loop->the_post(); ?>
+									<div class="col-sm-10 m-auto col-lg-4 p-0 m-lg-0">
+										<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="card">
+											<img src="<?php the_post_thumbnail_url('full'); ?>" class="card-img-top" alt="...">
+											<div class="overlay">
+												<div class="text"><i class="fas fa-search"></i></div>
+											</div>
+										</a>
+									</div>
+							<?php endwhile; ?>
+					</div>
 				</div>
+
 			</div>
 		</section>
 	</div>
@@ -134,7 +141,7 @@
 						<p class="my-2">
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
 						</p>
-						<a href="#" class="btn d-block mt-3">Entrar em Contato</a>
+						<a href="#contact" class="btn d-block mt-3">Entrar em Contato</a>
 					</div>
 
 				</div>
@@ -159,40 +166,40 @@
 						</div>
 						<div class="row">
 							<div class="col-sm-12 col-lg-4">
-								<div class="card p-3 text-center px-4">
+								<div class="card text-center p-4">
 									<div class="user-image mb-1">
 										<img src="<?php echo get_template_directory_uri(); ?>/img/tony.png" class="img-thumbnail">
 									</div>
 									<div class="user-content text-black">
 										<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque"</p>
 										<div class="golden-top my-2 d-flex flex-column align-items-center">
-											<h5 class="mb-0">Tony Stark, Stark Industries</h5>
+											<p class="mb-0">Tony Stark, Stark Industries</p>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="col-sm-12 col-lg-4">
-								<div class="card p-3 text-center px-4">
+								<div class="card text-center p-4">
 									<div class="user-image mb-1">
 										<img src="<?php echo get_template_directory_uri(); ?>/img/jeff.png" class="img-thumbnail">
 									</div>
 									<div class="user-content text-black">
 										<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque"</p>
 										<div class="golden-top my-2 d-flex flex-column align-items-center">
-											<h5 class="mb-0">Tony Stark, Stark Industries</h5>
+											<p class="mb-0">Jeff Bezos, Amazon Inc.</p>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="col-sm-12 col-lg-4">
-								<div class="card text-center px-4">
+								<div class="card text-center p-4">
 									<div class="user-image mb-1">
 										<img src="<?php echo get_template_directory_uri(); ?>/img/bill.png" class="img-thumbnail">
 									</div>
 									<div class="user-content text-black">
 										<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque"</p>
 										<div class="golden-top my-2 d-flex flex-column align-items-center">
-											<h5 class="mb-0">Tony Stark, Stark Industries</h5>
+											<p class="mb-0">Bill Gates, Microsoft.</p>
 										</div>
 									</div>
 								</div>
@@ -222,41 +229,41 @@
 					</div>
 				</div>
 
-				<div class="col-sm-8 col-lg-6 m-auto">
+				<div class="col-sm-10 col-lg-6 align-self-end">
 						<div class="row">
-							<div class="col-lg-4">
+							<div class="col-4">
 								<img src="<?php echo get_template_directory_uri(); ?>/img/cliente1.png" class="icon" />
 							</div>
 
-							<div class="col-lg-4">
+							<div class="col-4">
 								<img src="<?php echo get_template_directory_uri(); ?>/img/cliente2.png" class="icon" />
 							</div>
 
-							<div class="col-lg-4">
+							<div class="col-4">
 								<img src="<?php echo get_template_directory_uri(); ?>/img/cliente3.png" class="icon" />
 							</div>
 
-							<div class="col-lg-4">
+							<div class="col-4">
 								<img src="<?php echo get_template_directory_uri(); ?>/img/cliente4.png" class="icon" />
 							</div>
 
-							<div class="col-lg-4">
+							<div class="col-4">
 								<img src="<?php echo get_template_directory_uri(); ?>/img/cliente5.png" class="icon" />
 							</div>
 
-							<div class="col-lg-4">
+							<div class="col-4">
 								<img src="<?php echo get_template_directory_uri(); ?>/img/cliente6.png" class="icon" />
 							</div>
 
-							<div class="col-lg-4">
+							<div class="col-4">
 								<img src="<?php echo get_template_directory_uri(); ?>/img/cliente7.png" class="icon" />
 							</div>
 
-							<div class="col-lg-4">
+							<div class="col-4">
 								<img src="<?php echo get_template_directory_uri(); ?>/img/cliente8.png" class="icon" />
 							</div>
 
-							<div class="col-lg-4">
+							<div class="col-4">
 								<img src="<?php echo get_template_directory_uri(); ?>/img/cliente9.png" class="icon" />
 							</div>
 						</div>

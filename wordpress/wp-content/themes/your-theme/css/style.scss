@@ -31,7 +31,43 @@ svg {
 a {
   text-decoration: none;
   color: $gray;
+  &:hover{
+    color: $gold;
+  }
 }
+
+.card{
+  &:hover .overlay {
+    opacity: 1;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  .text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+}
+
+
+
 p {
   font-size: $font-size-m;
   color: $gray;
@@ -98,26 +134,25 @@ header{
 		font-size: $font-size-xl;
 		color: $black;
 	}
-	@include responsive() {
-
-		.container{
-			display: flex;
-			flex-direction: row;
-		flex-wrap: inherit;
-		align-items: center;
-		justify-content: space-between
-		}
-	}
+    @include responsive() {
+      .container{
+        display: flex;
+        flex-direction: row;
+      flex-wrap: inherit;
+      align-items: center;
+      justify-content: space-between
+      }
+    }
   .navbar-toggler:focus {
     box-shadow: none;
-}
+  }
 	.navbar-toggler-icon{
 		background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(210, 179, 86, 1)' stroke-width='4' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 	}
 }
 
 .navbar-nav{
-	& .menu-item a{
+	.menu-item a{
 		color: $gray;
 		outline: 1px solid transparent;
 		border-bottom: 4px solid transparent;
@@ -141,6 +176,7 @@ header{
 	}
 
 }
+
 .home-section {
   .title {
     text-transform: uppercase;

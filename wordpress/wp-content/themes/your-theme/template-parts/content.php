@@ -27,9 +27,7 @@
 
 			if ( 'post' === get_post_type() ) :
 		?>
-			<div class="entry-meta">
-				<?php your_theme_article_posted_on(); ?>
-			</div><!-- /.entry-meta -->
+
 		<?php
 			endif;
 		?>

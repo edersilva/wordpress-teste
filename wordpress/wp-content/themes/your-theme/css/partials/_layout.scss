@@ -1,5 +1,4 @@
 .container {
-
   @include responsive() {
     flex-direction: column;
     height: auto;
@@ -28,18 +27,18 @@
 }
 
 .home-section {
-  position: relative;
-
-  @include responsive() {
-    .container {
-    z-index: 2;
-    position: relative;
-    height: 150vh;
-  }
-}
   .container {
     z-index: 2;
     position: relative;
+    height: 70vh;
+
+  }
+  @include responsive() {
+    .container {
+      z-index: 2;
+      position: relative;
+      height: 150vh;
+    }
   }
   .overlay {
     z-index: -1;
@@ -54,7 +53,6 @@
     max-width: 70%;
   }
 }
-
 
 
 .item {
