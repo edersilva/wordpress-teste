@@ -1,8 +1,4 @@
 .container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  overflow: none;
 
   @include responsive() {
     flex-direction: column;
@@ -10,17 +6,6 @@
     overflow: hidden;
   }
 }
-
-.flex {
-  display: flex;
-}
-.align-items-center {
-  align-items: center;
-}
-.w-auto {
-  width: auto;
-}
-
 .golden-top {
   &::before {
     content: "";
@@ -42,12 +27,16 @@
   }
 }
 
-.section-hero {
+.home-section {
   position: relative;
 
   @include responsive() {
+    .container {
+    z-index: 2;
+    position: relative;
     height: 150vh;
   }
+}
   .container {
     z-index: 2;
     position: relative;

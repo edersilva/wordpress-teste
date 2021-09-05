@@ -1,27 +1,33 @@
-<?php
-/**
- * The template for displaying the footer
- *
- * Contains the closing of the #content div and all content after.
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package your-theme
- */
 
-?>
-	<footer id="colophon" class="site-footer">
-		<div class="container site-info">
-			<small class="text-muted">
-				<?php
-				printf( esc_html__( 'Feito com amor por Tatiane Gabrielle', 'your-theme' ), 'WordPress' );
-				?>
-			</small>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
+		</main><!-- /#main -->
+		<footer id="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6">
+						<p><small class="text-muted">Feito com amor por Tatiane Gabrielle</small></p>
+					</div>
 
-<?php wp_footer(); ?>
-
+					<?php
+						if ( has_nav_menu( 'footer-menu' ) ) :
+							wp_nav_menu(
+								array(
+									'theme_location'  => 'footer-menu',
+									'container'       => 'nav',
+									'container_class' => 'col-lg-6',
+									'fallback_cb'     => '',
+									'items_wrap'      => '<ul class="menu nav justify-content-end">%3$s</ul>',
+									//'fallback_cb'    => 'WP_Bootstrap4_Navwalker_Footer::fallback',
+									'walker'          => new WP_Bootstrap4_Navwalker_Footer(),
+								)
+							);
+						endif;
+					?>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<?php
+		wp_footer();
+	?>
 </body>
 </html>

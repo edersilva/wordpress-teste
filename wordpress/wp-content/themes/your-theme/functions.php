@@ -1,58 +1,48 @@
 <?php
-/**
- * your-theme functions and definitions
- *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
- *
- * @package your-theme
- */
 
-if ( ! defined( '_S_VERSION' ) ) {
-	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
+/**
+ * Include Theme Customizer.
+ *
+ * @since v1.0
+ */
+$theme_customizer = get_template_directory() . '/inc/customizer.php';
+if ( is_readable( $theme_customizer ) ) {
+	require_once $theme_customizer;
 }
 
-if ( ! function_exists( 'your_theme_setup' ) ) :
-	/**
-	 * Sets up theme defaults and registers support for various WordPress features.
-	 *
-	 * Note that this function is hooked into the after_setup_theme hook, which
-	 * runs before the init hook. The init hook is too late for some features, such
-	 * as indicating support for post thumbnails.
-	 */
-	function your_theme_setup() {
 
-		// Add default posts and comments RSS feed links to head.
-		add_theme_support( 'automatic-feed-links' );
+/**
+ * Include Support for wordpress.com-specific functions.
+ *
+ * @since v1.0
+ */
+$theme_wordpresscom = get_template_directory() . '/inc/wordpresscom.php';
+if ( is_readable( $theme_wordpresscom ) ) {
+	require_once $theme_wordpresscom;
+}
 
-		/*
-		 * Let WordPress manage the document title.
-		 * By adding theme support, we declare that this theme does not use a
-		 * hard-coded <title> tag in the document head, and expect WordPress to
-		 * provide it for us.
-		 */
+
+/**
+ * Set the content width based on the theme's design and stylesheet.
+ *
+ * @since v1.0
+ */
+if ( ! isset( $content_width ) ) {
+	$content_width = 800;
+}
+
+
+/**
+ * General Theme Settings.
+ *
+ * @since v1.0
+ */
+if ( ! function_exists( 'your_theme_setup_theme' ) ) :
+	function your_theme_setup_theme() {
+		// Theme Support.
 		add_theme_support( 'title-tag' );
-
-		/*
-		 * Enable support for Post Thumbnails on posts and pages.
-		 *
-		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
-		 */
+		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'post-thumbnails' );
-		// Image size for single posts
-		add_image_size( 'single-post-thumbnail', 367, 206 );
-
-		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus(
-			array(
-				'menu-1' => esc_html__( 'Primary', 'your-theme' ),
-			)
-		);
-
-		/*
-		 * Switch default core markup for search form, comment form, and comments
-		 * to output valid HTML5.
-		 */
 		add_theme_support(
 			'html5',
 			array(
@@ -61,116 +51,129 @@ if ( ! function_exists( 'your_theme_setup' ) ) :
 				'comment-list',
 				'gallery',
 				'caption',
-				'style',
 				'script',
+				'style',
+				'navigation-widgets',
 			)
 		);
 
-		// Set up the WordPress core custom background feature.
-		add_theme_support(
-			'custom-background',
-			apply_filters(
-				'your_theme_custom_background_args',
-				array(
-					'default-color' => 'ffffff',
-					'default-image' => '',
-				)
-			)
-		);
+		// Add support for Block Styles.
+		add_theme_support( 'wp-block-styles' );
+		// Add support for full and wide alignment.
+		add_theme_support( 'align-wide' );
+		// Add support for editor styles.
+		add_theme_support( 'editor-styles' );
+		// Enqueue editor styles.
+		add_editor_style( 'style-editor.css' );
 
-		// Add theme support for selective refresh for widgets.
-		add_theme_support( 'customize-selective-refresh-widgets' );
+		// Default Attachment Display Settings.
+		update_option( 'image_default_align', 'none' );
+		update_option( 'image_default_link_type', 'none' );
+		update_option( 'image_default_size', 'large' );
 
+		// Custom CSS-Styles of Wordpress Gallery.
+		add_filter( 'use_default_gallery_style', '__return_false' );
+	}
+	add_action( 'after_setup_theme', 'your_theme_setup_theme' );
+
+	// Disable Block Directory: https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/filters/editor-filters.md#block-directory
+	remove_action( 'enqueue_block_editor_assets', 'wp_enqueue_editor_block_directory_assets' );
+	remove_action( 'enqueue_block_editor_assets', 'gutenberg_enqueue_block_editor_assets_block_directory' );
+endif;
+
+
+/**
+ * Fire the wp_body_open action.
+ *
+ * Added for backwards compatibility to support pre 5.2.0 WordPress versions.
+ *
+ * @since v2.2
+ */
+if ( ! function_exists( 'wp_body_open' ) ) :
+	function wp_body_open() {
 		/**
-		 * Add support for core custom logo.
+		 * Triggered after the opening <body> tag.
 		 *
-		 * @link https://codex.wordpress.org/Theme_Logo
+		 * @since v2.2
 		 */
-		add_theme_support(
-			'custom-logo',
-			array(
-				'height'      => 250,
-				'width'       => 250,
-				'flex-width'  => true,
-				'flex-height' => true,
-			)
-		);
+		do_action( 'wp_body_open' );
 	}
 endif;
-add_action( 'after_setup_theme', 'your_theme_setup' );
+
+
 
 /**
- * Set the content width in pixels, based on the theme's design and stylesheet.
+ * Init Widget areas in Sidebar.
  *
- * Priority 0 to make it available to lower priority callbacks.
- *
- * @global int $content_width
- */
-function your_theme_content_width() {
-	$GLOBALS['content_width'] = apply_filters( 'your_theme_content_width', 640 );
-}
-add_action( 'after_setup_theme', 'your_theme_content_width', 0 );
-
-/**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
+ * @since v1.0
  */
 function your_theme_widgets_init() {
+	// Area 1.
 	register_sidebar(
 		array(
-			'name'          => esc_html__( 'Sidebar', 'your-theme' ),
-			'id'            => 'sidebar-1',
-			'description'   => esc_html__( 'Add widgets here.', 'your-theme' ),
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
+			'name'          => 'Primary Widget Area (Sidebar)',
+			'id'            => 'primary_widget_area',
+			'before_widget' => '',
+			'after_widget'  => '',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>',
 		)
 	);
+
+
 }
 add_action( 'widgets_init', 'your_theme_widgets_init' );
 
 
-/**
- * Enqueue scripts and styles.
- */
-function your_theme_enqueue_scripts() {
-    // all styles
-    wp_enqueue_style( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css', array(), 20141119 );
-    wp_enqueue_style( 'theme-style', get_stylesheet_directory_uri() . '/css/style.css', array(), 20141119 );
-    // all scripts
-    wp_enqueue_script( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js', array(), '20120206', true );
-}
 
-add_action( 'wp_enqueue_scripts', 'your_theme_enqueue_scripts' );
 
 /**
- * Register Custom Navigation Walker
- */
-function register_navwalker(){
-	require_once get_template_directory() . '/wp-bootstrap-navwalker.php';
-}
-add_action( 'after_setup_theme', 'register_navwalker' );
-
-add_filter( 'nav_menu_link_attributes', 'prefix_bs5_dropdown_data_attribute', 20, 3 );
-/**
- * Use namespaced data attribute for Bootstrap's dropdown toggles.
+ * Nav menus.
  *
- * @param array    $atts HTML attributes applied to the item's `<a>` element.
- * @param WP_Post  $item The current menu item.
- * @param stdClass $args An object of wp_nav_menu() arguments.
- * @return array
+ * @since v1.0
  */
-function prefix_bs5_dropdown_data_attribute( $atts, $item, $args ) {
-    if ( is_a( $args->walker, 'WP_Bootstrap_Navwalker' ) ) {
-        if ( array_key_exists( 'data-toggle', $atts ) ) {
-            unset( $atts['data-toggle'] );
-            $atts['data-bs-toggle'] = 'dropdown';
-        }
-    }
-    return $atts;
+if ( function_exists( 'register_nav_menus' ) ) {
+	register_nav_menus(
+		array(
+			'main-menu'   => 'Main Navigation Menu',
+			'footer-menu' => 'Footer Menu',
+		)
+	);
 }
+
+// Custom Nav Walker: wp_bootstrap_navwalker().
+$custom_walker = get_template_directory() . '/inc/wp_bootstrap_navwalker.php';
+if ( is_readable( $custom_walker ) ) {
+	require_once $custom_walker;
+}
+
+$custom_walker_footer = get_template_directory() . '/inc/wp_bootstrap_navwalker_footer.php';
+if ( is_readable( $custom_walker_footer ) ) {
+	require_once $custom_walker_footer;
+}
+
+
+/**
+ * Loading All CSS Stylesheets and Javascript Files.
+ *
+ * @since v1.0
+ */
+function your_theme_scripts_loader() {
+	$theme_version = wp_get_theme()->get( 'Version' );
+
+	// 1. Styles.
+	wp_enqueue_style( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css', array(), 20141119 );
+	wp_enqueue_style( 'theme-style', get_stylesheet_directory_uri() . '/css/style.css', array(), 20141119 );
+
+	// 2. Scripts.
+	wp_enqueue_script( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js', array(), '20120206', true );
+
+
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'your_theme_scripts_loader' );
 
 // Register Custom Post Type
 function custom_post_type() {
@@ -207,22 +210,26 @@ function custom_post_type() {
 }
 add_action( 'init', 'custom_post_type', 0 );
 
-/**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
+if( function_exists('acf_add_options_page') ) {
 
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/template-tags.php';
+	acf_add_options_page(array(
+		'page_title' 	=> 'Theme General Settings',
+		'menu_title'	=> 'Theme Settings',
+		'menu_slug' 	=> 'theme-general-settings',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> false
+	));
 
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
-require get_template_directory() . '/inc/template-functions.php';
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Theme Header Settings',
+		'menu_title'	=> 'Header',
+		'parent_slug'	=> 'theme-general-settings',
+	));
 
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer.php';
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Theme Footer Settings',
+		'menu_title'	=> 'Footer',
+		'parent_slug'	=> 'theme-general-settings',
+	));
+
+}
